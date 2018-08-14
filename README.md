@@ -1,5 +1,7 @@
-# robotiq_85_gripper
-Common packages for the Robotiq 85 Gripper provided by Stanley Innovation
+# robotiq_2f_gripper
+
+USB driver packages for the Robotiq 2Finger Gripper
+Original work provided by Stanley Innovation
 
 Defaults to 'ttyUSB0' and 115200 baud rate
 
@@ -8,5 +10,8 @@ Right gripper (in dual gripper configuration) need to be configured as device 9 
 
 
 start with:
-roslaunch robotiq_85_bringup robotiq_85.launch run_test:=true
+
+```
+rosrun robotiq_2f_gripper robotiq_2f_gripper
+```
 
