@@ -50,6 +50,7 @@ class Robotiq2FDriver(object):
         self._num_grippers = rospy.get_param('~num_grippers', 1)
         self._comport = rospy.get_param('~comport', '/dev/ttyUSB0')
         self._baud = rospy.get_param('~baud', 115200)
+        self._prefix = rospy.get_param('~prefix', '')
 
         self._gripper = Robotiq2FGripper(
             self._num_grippers, self._comport, self._baud)
@@ -165,7 +166,7 @@ class Robotiq2FDriver(object):
         js.header.frame_id = ''
         js.header.stamp = rospy.get_rostime()
         js.header.seq = self._seq[dev]
-        js.name = ['gripper_finger1_joint']
+        js.name = ['{}finger_joint'.format(self._prefix)]
         pos = np.clip(
             0.8 - ((0.8/0.085) * self._gripper.get_pos(dev)), 0., 0.8)
         js.position = [pos]
